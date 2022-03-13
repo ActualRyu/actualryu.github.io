@@ -1,7 +1,7 @@
 {
-    "version" : 3,
+    "version" : 3.1,
     "image" : "https://patreon.renpy.org/_static/news-banner.jpg",
     "link" : "https://patreon.com/renpytom",
-    "text" : "Latest Version 3 is out. [config.version] is your current version, you need to update"
+    "text" : exec("""\nif [config.version] < 3:\n    "You need to update"\nelse:\n    "Your current version is the latest one"\n""")
 }
 
