@@ -1,6 +1,6 @@
 {
-    "version" : 3.3,
+    "version" : 3.4,
     "image" : "https://images.samsung.com/is/image/samsung/assets/sg/support/mobile-devices/how-to-check-for-software-upgrade-on-samsung-mobile-device/softwareupdate1.jpg",
     "link" : "https://patreon.com/renpytom",
-    "text" : "Latest Version: 3.2\nYour Version: [config.version]\nPlease click {a=https://www.domain.com/newproject/}here{/a} to view the changelogs."
+    "text" : "Latest Version: 3.2\n"
 }
