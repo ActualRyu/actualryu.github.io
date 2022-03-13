@@ -1,10 +1,6 @@
 {
-    "version" : 3.1,
+    "version" : 3.2,
     "image" : "https://patreon.renpy.org/_static/news-banner.jpg",
     "link" : "https://patreon.com/renpytom",
     "text" : "Latest Version: 3\nCurrent Version: [config.version]\nIf your version is low, please click on the image to update it."
-    
-    "image" : "https://patreon.renpy.org/_static/news-banner.jpg",
-    "link" : "https://patreon.com/renpytom",
-    "text" : "Newer News"
 }
