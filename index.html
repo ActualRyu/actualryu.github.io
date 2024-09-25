@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="background-color: var(--bg-color); color: var(--text-color);">
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="container">
+            <h1>Ryu's Portal</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- About section -->
+        <section id="about" class="about-section">
+            <img src="https://avatars.githubusercontent.com/u/88554662?v=4" alt="Ryu" class="profile-picture">
+            <div>
+                <h2>Ryu</h2>
+                <p>Hi! I'm a passionate coder diving deep into the world of web development with JavaScript, HTML, and CSS. I love creating intuitive and engaging user experiences. I also have some experience with Python and have dabbled in Ren'py, GML, C#, and Java. I'm always eager to learn and explore new technologies, turning ideas into reality one line of code at a time!</p>
+            </div>
+        </section>
+
+        <!-- Projects section -->
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="projects">
+                <!-- Projects will be dynamically added here -->
+            </div>
+        </section>
+
+        <!-- FAQ section -->
+        <section id="faq">
+            <h2>About Me</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">What programming languages do you use?</button>
+                    <div class="accordion-content">
+                        <p>I primarily focus on front-end development using JavaScript, HTML, and CSS. I also have some experience with Python, and I’ve worked with Ren'py, GML, C#, and Java in the past.</p>
+                    </div>
+                </div>
+                <!-- Add more FAQ items as needed -->
+            </div>
+        </section>
+    </main>
+
+
+
+    <!-- Theme toggle button -->
+    <button class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    <script src="common.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

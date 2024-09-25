@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouKan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="background-color: var(--bg-color); color: var(--text-color);">
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="container">
+            <h1>YouKan - A lightweight KanBan New Tab</h1>
+            <nav>
+                <ul>
+                    <li><a href="#details">Details</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#download">Download</a></li>
+                    <li><a href="index.html">Go Back</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+         <!-- Project Slideshow -->
+        <div class="slideshow-container">
+            <div class="slides">
+                <div class="slide">
+                    <img src="youkan/ss1.png" />
+                </div>
+                <div class="slide">
+                    <img src="youkan/ss2.png" />
+                </div>
+                <div class="slide">
+                    <img src="youkan/ss3.png"  />
+                </div>
+                <div class="slide">
+                    <img src="youkan/ss4.png" />
+                </div>
+                <div class="slide">
+                    <img src="youkan/ss5.png"  />
+                </div>
+                <div class="slide">
+                    <iframe width="600px" height="100%" src="https://www.youtube.com/embed/ESJtx7nVqDE" title="YouKan - Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <!-- Add more slides as needed -->
+            </div>
+            <div class="nav-buttons">
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+            <div class="alt-text" id="altText"></div>
+        </div>
+        
+        <!-- Project Details section -->
+        <section id="details">
+            <h2>What is YouKan?</h2>
+            <p>YouKan is a simple Kanban app that replaces your Chrome new tab page. With an easy drag-and-drop interface, it helps you manage tasks—whether for work or personal use—without any distractions.</p>
+        </section>
+
+        <!-- Project Features section -->
+        <section id="features">
+            <h2>Features</h2>
+            <ul>
+                <li>Drag-and-drop task management</li>
+                <li>Lightweight and minimal interface</li>
+                <li>Integrated with your Chrome new tab</li>
+                <li>No account or login required</li>
+                <li>Easy backup and restore</li>
+            </ul>
+        </section>
+
+        <!-- Download and Donate section -->
+        <section id="download">
+            <h2>Download</h2>
+            <p>Download will be available soon.</p>
+            <div class="button-group">
+                <a href="https://youkan.vercel.app/" class="button demo-btn" aria-label="Live Demo">Live Demo</a>
+                <!-- <a href="youkan.zip" class="button download-btn" aria-label="Download YouKan">Download</a>
+                 <a href="https://paypal.me/yourdonatelink" class="button donate-btn" aria-label="Donate to support YouKan">Donate</a> 
+                <a href="index.html" class="button back-btn" aria-label="Go back to projects">Go Back</a>-->
+            </div>
+        </section>
+         <!-- FAQ section -->
+         <section id="faq">
+            <h2>Some Q&As</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">What languages does YouKan use?</button>
+                    <div class="accordion-content">
+                        <p>Everything is written in HTML, CSS and JS.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">Is it free?</button>
+                    <div class="accordion-content">
+                        <p>Yes, it is and it will remain that way.</p>
+                    </div>
+                </div>
+                <!-- Add more FAQ items as needed -->
+            </div>
+        </section>
+    </main>
+
+    <button class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    
+
+    <script src="project.js"></script>
+    <script src="common.js"></script>
+</body>
+</html>
