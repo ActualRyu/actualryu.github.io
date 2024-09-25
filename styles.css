@@ -378,3 +378,113 @@ img {
 .zoom-overlay.show .zoomed-img {
     transform: scale(1); /* Scale to original size when shown */
 }
+
+/* Responsive design */
+@media (max-width: 768px) {
+    /* Adjust container padding and width */
+    .container {
+        padding: 10px;
+    }
+
+    /* Sticky Header */
+.sticky-header .container {
+    display: flex;
+    flex-direction: column; /* Stack the title and nav vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    height: var(--header-height); /* Maintain header height */
+    padding: 10px 20px; /* Adjust padding */
+    text-align: center; /* Center text */
+}
+
+.sticky-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.sticky-header nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+    margin: 10px 0 0 0; /* Add margin to space between the title and nav */
+    padding: 0;
+    justify-content: center; /* Center nav items horizontally */
+}
+
+.sticky-header nav ul li {
+    display: inline-block; /* Keep nav items in a single line */
+}
+
+.sticky-header nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.sticky-header nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+    /* About section */
+    .about-section {
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: center; /* Center align content */
+        gap: 20px; /* Adjust gap between image and text */
+    }
+
+    .profile-picture {
+        width: 150px; /* Smaller profile picture */
+        height: 150px;
+    }
+
+    /* Project cards */
+    .project-card {
+        width: 100%; /* Full-width project cards on mobile */
+    }
+
+    /* FAQ section */
+    .accordion-header {
+        padding: 15px; /* Smaller padding for mobile */
+    }
+
+    .accordion-content {
+        padding: 0 15px;
+    }
+
+    /* Footer adjustments */
+    footer .container {
+        flex-direction: column; /* Stack footer content */
+        text-align: center; /* Center-align footer text */
+    }
+
+    .social-links {
+        margin-top: 10px; /* Add space between links and text */
+    }
+
+    .social-links a {
+        margin: 0 7px; /* Adjust spacing between social links */
+    }
+
+    /* Theme toggle button */
+    .theme-toggle {
+        width: 40px; /* Smaller button for mobile */
+        height: 40px;
+        font-size: 20px; /* Smaller icon */
+    }
+
+    /* Slideshow adjustments for mobile */
+    .slideshow-container {
+        max-width: 100%; /* Full-width on mobile */
+        height: 30vh; /* Adjust height to fit smaller screens */
+    }
+
+    .prev, .next {
+        padding: 8px; /* Smaller navigation buttons */
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .alt-text {
+        font-size: 14px; /* Smaller alt text on mobile */
+    }
+}
