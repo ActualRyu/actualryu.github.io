@@ -1,7 +1,7 @@
 // Project data
 const projects = [
     { title: "YouKan", description: "YouKan is a lightweight Kanban app that replaces your Chrome new tab page. It features a simple interface for task organization—nothing more, nothing less.", link: "youkan.html" },
-    { title: "Reflections", description: "Reflections is a wallpaper app offering a stunning collection of beautiful wallpapers to elevate your device's look. Browse and discover images that reflect your unique style effortlessly! Reflections currently have8 wallpapers.", link: "youkan.html" }
+    { title: "Reflections", description: "Reflections is a wallpaper app offering a stunning collection of beautiful wallpapers to elevate your device's look. Browse and discover images that reflect your unique style effortlessly! Reflections currently have8 wallpapers.", link: "https://reflections-rust.vercel.app/" }
     // Add more projects as needed
 ];
 
