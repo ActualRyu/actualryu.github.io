@@ -33,6 +33,8 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // Theme toggle functionality
+let toggleClickCount = 0; // Initialize a click counter
+
 function toggleTheme() {
     const body = document.body;
     const themeToggle = document.querySelector('.theme-toggle i');
@@ -47,7 +49,21 @@ function toggleTheme() {
     } else {
         localStorage.setItem('theme', 'light');
     }
+
+    // Increment the click counter
+    toggleClickCount++;
+
+    // Check if the click count has reached 10
+    if (toggleClickCount === 10) {
+        showVideoPopup(); // Show the video popup
+        toggleClickCount = 0; // Reset the counter
+    }
 }
+
+function showVideoPopup() {
+    document.getElementById('video-popup').style.display = 'flex'; // Show the video popup
+}
+
 
 // Add event listener to theme toggle button
 document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
@@ -122,3 +138,14 @@ function insertFooter() {
 
 // Call the function to insert the footer
 insertFooter();
+document.addEventListener('DOMContentLoaded', function() {
+    const closeButton = document.querySelector('.close-popup');
+    const videoPopup = document.getElementById('video-popup');
+
+    if (closeButton) {
+        closeButton.addEventListener('click', function() {
+            videoPopup.style.display = 'none'; // Close the popup
+            clearTimeout(popupTimeout); // Clear the timeout
+        });
+    }
+});

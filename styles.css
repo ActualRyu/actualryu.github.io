@@ -135,19 +135,25 @@ body {
 
 /* FAQ Accordion styles */
 .accordion-item {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color); /* Light border for definition */
 }
 
 .accordion-header {
     background-color: var(--secondary-color);
     color: var(--text-color);
     cursor: pointer;
-    padding: 18px;
+    padding: 16px;
     width: 100%;
     text-align: left;
     border: none;
     outline: none;
-    transition: 0.4s;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    position: relative; /* For icon positioning */
 }
 
 .accordion-header:hover {
@@ -155,13 +161,39 @@ body {
     color: white;
 }
 
+/* Add a chevron icon for visual cue */
+.accordion-header::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: solid transparent;
+    border-width: 5px 6px 0;
+    border-top-color: currentColor; /* Uses the current text color */
+    transition: transform 0.3s ease;
+}
+
+/* Rotate the chevron when content is shown */
+.accordion-item.active .accordion-header::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
 .accordion-content {
-    padding: 0 18px;
-    background-color: var(--bg-color);
+    padding: 0 16px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 0.2s ease-out, padding 0.2s ease-out;
 }
+
+.accordion-content.show {
+    max-height: 500px; /* Ensure this is enough for your content */
+    padding: 16px; /* Adding padding for content area */
+    border-top: 1px solid var(--border-color); /* Light separator line */
+}
+
 
 /* Footer */
 footer {
@@ -487,4 +519,40 @@ img {
     .alt-text {
         font-size: 14px; /* Smaller alt text on mobile */
     }
+}
+.video-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it is above other content */
+}
+
+.popup-content {
+    position: relative;
+    width: auto;
+    max-width: 80%;
+    max-height: 80%;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001; /* Make sure it is above the video */
+}
+
+
+.close-popup:hover {
+    color: #ff6347; /* Change color on hover */
 }

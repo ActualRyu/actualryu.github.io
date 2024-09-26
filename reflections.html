@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proof of Concept - Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body style="background-color: var(--bg-color); color: var(--text-color);">
+    <!-- Sticky Header -->
+    <header class="sticky-header">
+        <div class="container">
+            <h1>Proof of Concept</h1>
+            <nav>
+                <ul>
+                    <li><a href="#intro">Intro</a></li>
+                    <li><a href="#purpose">Purpose</a></li>
+                    <li><a href="#demo">Demo</a></li>
+                    <li><a href="#moreinfo">More Info</a></li>
+                    <li><a href="/">Go Back</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Intro Section -->
+        <section id="intro">
+            <h2>What is this Proof of Concept?</h2>
+            <p>This proof of concept is for a wallpaper web app, designed using HTML, CSS, and JavaScript. It fetches wallpaper content and metadata from a JSON file, displaying the images in a visually appealing layout. The project also demonstrates the app’s Progressive Web App (PWA) functionality, allowing users to experience a seamless and mobile-friendly interface.</p>
+        </section>
+
+        <!-- Purpose Section -->
+        <section id="purpose">
+            <h2>Why Build This?</h2>
+            <p>The idea for this project was inspired by MKBHD’s wallpaper app. The goal was to explore whether a simpler, more streamlined version could be built and still deliver a satisfying user experience. It serves as an experiment to test the feasibility of building an intuitive and minimalistic wallpaper app that can potentially grow with future features.</p>
+        </section>
+
+        <!-- This is an iframe for the project -->
+        <section id="demo"> 
+        <iframe src="https://reflections-rust.vercel.app/" 
+    style="border: 0; 
+           border-radius: 20px; 
+           width: 40%; 
+           height: 80vh; 
+           margin: 0 auto; 
+           display: block;"
+    name="reflectionsDemo" 
+    scrolling="yes" 
+    frameborder="0" 
+    allowfullscreen>
+</iframe>
+</section>
+        <!-- Slideshow Section (Video first) 
+        <div class="slideshow-container">
+            <div class="slides">
+                <div class="slide">
+                    <iframe width="600px" height="100%" src="https://www.youtube.com/embed/ESJtx7nVqDE" title="Proof of Concept - Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+                <div class="slide">
+                    <img src="proof/ss1.png" />
+                </div>
+                <div class="slide">
+                    <img src="proof/ss2.png" />
+                </div>
+                <div class="slide">
+                    <img src="proof/ss3.png" />
+                </div>
+                <div class="slide">
+                    <img src="proof/ss4.png" />
+                </div>-->
+                <!-- Add more slides as needed 
+            </div>
+            <div class="nav-buttons">
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+            <div class="alt-text" id="altText"></div>
+        </div>-->
+
+        <!-- QNA -->
+        <section id="moreinfo">
+            <p>Live Demo Notice: While you can view the live demo in the embedded frame above, I highly recommend clicking the "Live Demo" button below for the full experience. Please note that this app is designed specifically with a mobile user interface in mind and is not intended for use on desktop or larger screens.</p>
+            <h2>Project Walkthrough</h2>
+            <p>When you load the app, it takes a few seconds to fetch and display wallpapers from the JSON file. The main page lists all available wallpapers, and by clicking on any wallpaper, users can either download it or close the view to return to the main menu. The download button directly saves the wallpaper without opening the full image.
+
+                The app includes three core sections:</p>
+                <ol>
+                    <li>Main Page – Displays a list of all available wallpapers.</li>
+                    <li>Tags Page – Features a tag cloud where users can browse wallpapers by category or tags.</li>
+                    <li>About Page – Provides background information on the app’s development and purpose.</li>
+                </ol>
+                <p>Initially, there was a plan to add a page for saving favorite tags and categories, but after considering the design, the tag cloud feature was deemed sufficient for helping users easily find wallpapers by their preferred tags.</p>
+        </section>
+
+        <!-- Download and FAQ Section combined for variety -->
+        <section id="download">
+            <h2>Resources & FAQ</h2>
+            <p>The concept is still under testing. For now, you can explore the demo or contribute feedback.</p>
+            <div class="button-group">
+                <a href="https://reflections-rust.vercel.app/" class="button demo-btn" aria-label="Live Demo">Live Demo</a>
+            </div>
+            <div class="accordion">
+        <!-- Separator -->
+         <p></p>
+        <div class="accordion">
+            <!-- Q1 -->
+            <div class="accordion-item">
+                <button class="accordion-header">What is this proof of concept?</button>
+                <div class="accordion-content">
+                    <p>This project is a concept for a wallpaper web app. It’s built using HTML, CSS, and JavaScript to fetch wallpaper content from a JSON file. The app is mobile-focused, showcasing a seamless and visually engaging way to browse and download wallpapers.</p>
+                </div>
+            </div>
+            <!-- Q2 -->
+            <div class="accordion-item">
+                <button class="accordion-header">Why did I build this?</button>
+                <div class="accordion-content">
+                    <p>This app was inspired by MKBHD's wallpaper app. I wanted to challenge myself to create a simpler version and see if it could grow into something useful for others. It's also a chance to explore Progressive Web App (PWA) features.</p>
+                </div>
+            </div>
+            <!-- Q3 -->
+            <div class="accordion-item">
+                <button class="accordion-header">Is the app optimized for PC?</button>
+                <div class="accordion-content">
+                    <p>No, this app is designed with mobile UI in mind only. The layout and functionality are tailored for mobile devices, so it may not provide the best experience on a desktop or larger screen.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button class="theme-toggle" aria-label="Toggle dark/light mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    <div id="video-popup" class="video-popup" style="display: none;">
+        <div class="popup-content">
+            <button class="close-popup" aria-label="Close Video Popup">&times;</button>
+            <video id="popup-video" width="100%" height="auto" autoplay muted loop>
+                <source src="media/kitten.webm" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    
+    <script src="project.js"></script>
+    <script src="common.js"></script>
+</body>
+</html>
