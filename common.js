@@ -105,7 +105,7 @@ const footerHTML = `
             <a href="https://github.com/ActualRyu" aria-label="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/kaungsitnaing/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
              <a href="https://codepen.io/actualryu" aria-label="Codepen"><i class="fab fa-codepen"></i></a>
-             <a href="https://twitter.com/ActuallyRyu" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+             <a href="https://twitter.com/ActuallyRyu" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
     </div>
 </footer>
