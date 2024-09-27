@@ -1,0 +1,172 @@
+:root {
+    --bg-color: #121212; /* Original background color */
+    --text-color: #ffffff;
+    --accent-color: #ffffff;
+    --secondary-color: #03dac6;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Spectral", serif;
+    font-weight: 600;
+    font-style: normal;
+    background: url('bg.jpg') no-repeat center center fixed;
+    background-size: cover; /* Ensures the background image covers the entire screen */
+    color: var(--text-color);
+    position: relative; /* Establishes a positioning context for the overlay */
+}
+
+body::before {
+    content: "";
+    position: absolute; /* Changed to absolute */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    z-index: 0; /* Place it behind other content */
+}
+
+.parent-container {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center;    /* Centers vertically */
+    height: auto;           /* Auto height to adjust for content */
+    padding: 20px;         /* Add padding for mobile */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+}
+
+.header-image {
+    height: 50vh;
+    max-width: 100%;        /* Use percentage for responsiveness */
+    object-fit: cover;
+}
+
+main {
+    padding: 20px;
+}
+
+.countdown-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.countdown {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.countdown h2 {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+}
+
+.countdown-values {
+    display: flex;
+    justify-content: center;
+}
+
+.countdown-values div {
+    margin: 0 10px;
+}
+
+.poster-container {
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.poster-scroll {
+    display: flex;
+    animation: scroll 60s linear infinite;
+}
+
+.poster {
+    width: 200px; /* Default width for larger screens */
+    height: auto;
+    margin-right: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.poster:hover {
+    transform: scale(1.05);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.back-button, .twitter-button {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.back-button:hover, .twitter-button:hover {
+    color: var(--secondary-color);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .parent-container {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 10px;         /* Adjust padding */
+    }
+
+    .header-image {
+        height: 30vh; /* Adjust image height for mobile */
+    }
+
+    .countdown-container {
+        flex-direction: column;
+        align-items: center; /* Center items */
+        backdrop-filter: blur(10px); /* Frosted glass effect */
+    }
+
+    .countdown {
+        width: 100%; /* Full width on mobile */
+        max-width: 400px; /* Limit max width */
+    }
+
+    .poster {
+        width: 150px; /* Smaller poster size on mobile */
+        margin-right: 10px; /* Reduce margin */
+    }
+
+    footer {
+        flex-direction: row; /* Keep footer items in a row */
+        justify-content: space-between; /* Left and right positioning */
+        width: 100%; /* Full width */
+        padding: 10px; /* Adjust padding */
+    }
+
+    .back-button, .twitter-button {
+        font-size: 16px; /* Slightly smaller buttons */
+        width: 48%; /* Adjust width for spacing */
+        text-align: center; /* Center text */
+    }
+}

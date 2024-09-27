@@ -1,7 +1,8 @@
 // Project data
 const projects = [
     { title: "YouKan", description: "YouKan is a lightweight Kanban app that replaces your Chrome new tab page. It features a simple interface for task organization—nothing more, nothing less.", link: "youkan.html" },
-    { title: "Reflections", description: "A proof of concept for a wallpaper web app that fetches and displays wallpapers beautifully. ", link: "reflections.html" }
+    { title: "Reflections", description: "A proof of concept for a wallpaper web app that fetches and displays wallpapers beautifully. ", link: "reflections.html" },
+    { title: "Arcane Countdown", description: "Countdown to a GOAT of a show.", link: "arcanecountdown.html" }
     // Add more projects as needed
 ];
 
