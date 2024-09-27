@@ -144,7 +144,7 @@ footer {
 }
 
 /* Mobile Styles */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .parent-container {
         padding: 15px;
     }
@@ -172,7 +172,7 @@ footer {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .countdown h2 {
         font-size: 1rem;
     }
