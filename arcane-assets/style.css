@@ -146,8 +146,26 @@ footer {
 /* Mobile Styles */
 @media (max-width: 1024px) {
     .parent-container {
-        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        min-height: 10vh;
+        max-height: 20vh;
+        padding: 20px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1;
     }
+    
+    .header-image {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+    
 
     .countdown-container {
         flex-direction: column;
