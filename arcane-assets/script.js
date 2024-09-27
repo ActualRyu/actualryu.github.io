@@ -1,4 +1,4 @@
-const countdownDates = [
+const releaseDates = [
     new Date('November 9, 2024 00:00:00 PST'),
     new Date('November 16, 2024 00:00:00 PST'),
     new Date('November 23, 2024 00:00:00 PST')
@@ -20,28 +20,22 @@ const timezones = [
     { name: 'AEDT', offset: 11 }
 ];
 
-function getLocalTimezone() {
-    const offset = -new Date().getTimezoneOffset() / 60;
-    const closestTimezone = timezones.reduce((prev, curr) => 
-        Math.abs(curr.offset - offset) < Math.abs(prev.offset - offset) ? curr : prev
-    );
-    return closestTimezone;
+function getUserTimezone() {
+    const userOffset = -new Date().getTimezoneOffset() / 60;
+    return timezones.find(tz => tz.offset === userOffset) || { name: 'Local', offset: userOffset };
 }
 
 function updateCountdown() {
     const now = new Date();
-    const localTimezone = getLocalTimezone();
+    const userTimezone = getUserTimezone();
 
-    countdownDates.forEach((date, index) => {
-        const targetDate = new Date(date.getTime() + (localTimezone.offset + 8) * 60 * 60 * 1000);
-        const timeLeft = targetDate - now;
+    releaseDates.forEach((releaseDate, index) => {
+        const countdownElement = document.getElementById(`countdown${index + 1}`);
+        const adjustedReleaseDate = new Date(releaseDate.getTime() + (userTimezone.offset + 8) * 60 * 60 * 1000);
+        const timeLeft = adjustedReleaseDate - now;
 
-        const countdownElement = document.querySelector(`#countdown${index + 1} .countdown-values`);
-
-        if (timeLeft < 0) {
-            // If the countdown has reached zero, update the text
-            countdownElement.innerHTML = `
-                <div>It's out now, go watch on <a href="https://www.netflix.com/title/81435684" target="_blank">Netflix.</a></div>`;
+        if (timeLeft <= 0) {
+            countdownElement.innerHTML = `<div>It's out now, go watch on <a href="https://www.netflix.com/title/81435684" target="_blank">Netflix.</a></div>`;
         } else {
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -49,28 +43,13 @@ function updateCountdown() {
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
             countdownElement.innerHTML = `
-                <div>${days}d</div>
-                <div>${hours}h</div>
-                <div>${minutes}m</div>
-                <div>${seconds}s</div>
+                <h2>Act ${index + 1}</h2>
+                <div>${days}d ${hours}h ${minutes}m ${seconds}s</div>
+                <div>${adjustedReleaseDate.toLocaleString()} (${userTimezone.name})</div>
             `;
         }
     });
 }
 
-// Update countdown every second
 setInterval(updateCountdown, 1000);
-
-// Initial update
 updateCountdown();
-
-// Duplicate posters for endless scroll effect
-const posterScroll = document.querySelector('.poster-scroll');
-const posters = posterScroll.innerHTML;
-posterScroll.innerHTML = posters + posters;
-
-// Back button functionality
-document.querySelector('.back-button').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.history.back();
-});
