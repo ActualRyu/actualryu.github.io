@@ -51,5 +51,25 @@ function updateCountdown() {
     });
 }
 
+
+function setupEndlessScroll() {
+    const posterScroll = document.querySelector('.poster-scroll');
+    const posters = posterScroll.querySelectorAll('.poster');
+    
+    // Clone the posters and append them to create the illusion of an endless scroll
+    posters.forEach(poster => {
+        const clone = poster.cloneNode(true);
+        posterScroll.appendChild(clone);
+    });
+
+    // Calculate the total width of all original posters
+    const totalWidth = Array.from(posters).reduce((width, poster) => width + poster.offsetWidth + 20, 0); // 20px for margin-right
+
+    // Set the animation
+    posterScroll.style.animation = `scroll ${totalWidth / 50}s linear infinite`; // Adjust speed as needed
+}
+
+
 setInterval(updateCountdown, 1000);
 updateCountdown();
+window.addEventListener('load', setupEndlessScroll);
