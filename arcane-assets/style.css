@@ -19,7 +19,7 @@ body, html {
 
 body::before {
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -41,8 +41,9 @@ body::before {
 }
 
 .header-image {
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
     object-fit: cover;
     margin-bottom: 20px;
 }
@@ -66,27 +67,27 @@ main {
 .countdown {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
     margin: 10px;
     text-align: center;
     flex: 1;
-    min-width: 200px;
+    min-width: 150px;
 }
 
 .countdown h2 {
     color: var(--accent-color);
     margin-bottom: 10px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .countdown-values {
     display: flex;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .countdown-values div {
-    margin: 0 10px;
+    margin: 0 5px;
 }
 
 .poster-container {
@@ -100,9 +101,9 @@ main {
 }
 
 .poster {
-    width: 200px;
+    width: 150px;
     height: auto;
-    margin-right: 20px;
+    margin-right: 15px;
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
@@ -119,7 +120,7 @@ main {
 footer {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
+    padding: 15px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 10px;
@@ -130,7 +131,7 @@ footer {
 .back-button, .twitter-button {
     color: var(--text-color);
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     padding: 10px 15px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
@@ -148,10 +149,6 @@ footer {
         padding: 15px;
     }
 
-    .header-image {
-        height: 30vh;
-    }
-
     .countdown-container {
         flex-direction: column;
         align-items: center;
@@ -163,19 +160,6 @@ footer {
         margin: 10px 0;
     }
 
-    .countdown h2 {
-        font-size: 1.2rem;
-    }
-
-    .countdown-values {
-        font-size: 1.5rem;
-    }
-
-    .poster {
-        width: 150px;
-        margin-right: 15px;
-    }
-
     footer {
         flex-direction: column;
         align-items: center;
@@ -185,16 +169,10 @@ footer {
     .back-button, .twitter-button {
         width: 100%;
         text-align: center;
-        font-size: 16px;
     }
 }
 
 @media (max-width: 480px) {
-    .header-image {
-        height: 25vh;
-        width: 100%
-    }
-
     .countdown h2 {
         font-size: 1rem;
     }
