@@ -485,6 +485,7 @@ footer {
         color: #fff;
         border-radius: 5px;
         justify-content: center;
+        align-items: center;
     }
     .slideshow-container {
         max-width: 95vw;
