@@ -478,8 +478,9 @@ footer {
         transform: rotate(45deg) translate(-5px, -6px);
     }
     #home {
+        display: flex;
         text-align: center;
-        padding: 5rem;
+        padding: 3rem;
         margin:1rem;
         background-color: #007bff;
         color: #fff;
