@@ -4,20 +4,17 @@
   <meta charset="UTF-8">
   <title>Ryu's Portal</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../style.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <header>
         <nav>
-            <div class="logo">Ryu</div>
+            <div class="logo">Ryu - Blog</div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="blog/blog.html">Blog</a></li>
-
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="javascript:history.back()">Back</a></li>
                 <!-- <li><a href="#contact">Contact</a></li> -->
             </ul>
             <div class="burger">
@@ -30,22 +27,20 @@
 
     <main>
         <section id="home">
-            <h1>Ryu</h1>
-            <h2>A Developer</h2>
+            <h1>Blog Post Title</h1>
              <!--<a href="#contact" class="cta-button">Get in touch</a>-->
         </section>
-
         <section id="about">
-            <h2>About Me</h2>
-            <p>Hi! I'm a passionate coder diving deep into the world of web development with JavaScript, HTML, and CSS. I love creating intuitive and engaging user experiences. I also have some experience with Python and have dabbled in Ren'py, GML and C#. I'm always eager to learn and explore new technologies, turning ideas into reality one line of code at a time!</p>
+            <h2>Blog Content Mini Title</h2>
+            <p>Blog Post Contents</p>
+            <img src="https://via.placeholder.com/300x200.png?text=YouKan">
+            <p>Blog Post Contents</p>
+            <img src="https://via.placeholder.com/300x200.png?text=YouKan">
+            <p>Blog Post Contents</p>
+            <img src="https://via.placeholder.com/300x200.png?text=YouKan">
         </section>
 
-        <section id="projects">
-            <h2>My Projects</h2>
-            <div id="project-list"></div>
-        </section>
 
-        
 
         <!--<section id="contact">
             <h2>Get in Touch</h2>
@@ -58,9 +53,16 @@
         </section>-->
     </main>
 
-
+    <footer>
+        <p>&copy; 2024 John Doe. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
 <!-- partial -->
-  <script  src="./common.js"></script>
-  <script  src="./index.js"></script>
+  <script  src="../common.js"></script>
+  <script  src="blog.js"></script>
 </body>
 </html>

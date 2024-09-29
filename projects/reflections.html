@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Ryu's Portal</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<header>
+        <nav>
+            <div class="logo">Ryu - YouKan</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="#info">Information</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#faq">Q&A</a></li>
+                <li><a href="javascript:history.back()">Back</a></li>
+                <!-- <li><a href="#contact">Contact</a></li> -->
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Reflections</h1>
+            <h2>Mobile wallpapers website & PWA.</h2>
+            <a href="#download" class="cta-button">Live Demo</a>
+        </section>
+
+        <section id="info">
+            <h2>What is this proof of concept?</h2>
+            <p>This proof of concept is for a wallpaper web app, designed using HTML, CSS, and JavaScript. It fetches wallpaper content and metadata from a JSON file, displaying the images in a visually appealing layout. The project also demonstrates the app’s Progressive Web App (PWA) functionality, allowing users to experience a seamless and mobile-friendly interface.</p>
+            <h2>Why Build This?</h2>
+            <p>The idea for this project was inspired by MKBHD’s wallpaper app. The goal was to explore whether a simpler, more streamlined version could be built and still deliver a satisfying user experience. It serves as an experiment to test the feasibility of building an intuitive and minimalistic wallpaper app that can potentially grow with future features.</p>    
+        </section>
+        <section id="demo"> 
+            <iframe src="https://reflections-rust.vercel.app/" 
+        style="border: 0; 
+               border-radius: 20px; 
+               width: 80%; 
+               height: 80vh; 
+               margin: 0 auto; 
+               display: block;"
+        name="reflectionsDemo" 
+        scrolling="yes" 
+        frameborder="0" 
+        allowfullscreen>
+    </iframe>
+    <p>Live Demo Notice: While you can view the live demo in the embedded frame above, I highly recommend clicking the "Live Demo" button below for the full experience. Please note that this app is designed specifically with a mobile user interface in mind and is not intended for use on desktop or larger screens.</p>
+    <h2>Project Walkthrough</h2>
+    <p>When you load the app, it takes a few seconds to fetch and display wallpapers from the JSON file. The main page lists all available wallpapers, and by clicking on any wallpaper, users can either download it or close the view to return to the main menu. The download button directly saves the wallpaper without opening the full image.
+
+        The app includes three core sections:</p>
+
+            <li>Main Page – Displays a list of all available wallpapers.</li>
+            <li>Tags Page – Features a tag cloud where users can browse wallpapers by category or tags.</li>
+            <li>About Page – Provides background information on the app’s development and purpose.</li>
+
+        <p>Initially, there was a plan to add a page for saving favorite tags and categories, but after considering the design, the tag cloud feature was deemed sufficient for helping users easily find wallpapers by their preferred tags.</p>
+    <div class="button-block">
+        
+        <a href="https://reflections-rust.vercel.app/" class="cta-button demo-button">
+            <i class="fas fa-eye"></i> Live Demo
+        </a>
+    </div>
+    </section>     
+
+        <section id="faq">
+            <h2>Q&A</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <h3 class="accordion-header">Is this optimized for PC?</h3>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner"><p>No, this app is designed with mobile UI in mind only. The layout and functionality are tailored for mobile devices, so it may not provide the best experience on a desktop or larger screen.</p></div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!--<section id="contact">
+            <h2>Get in Touch</h2>
+            <form>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>-->
+    </main>
+
+<!-- partial -->
+  <script  src="../common.js"></script>
+  <script  src="project.js"></script>
+</body>
+</html>

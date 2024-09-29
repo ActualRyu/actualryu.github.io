@@ -1,74 +1,36 @@
-// Immediately set the theme based on stored value
-(function () {
-    const storedTheme = localStorage.getItem('theme');
-    const body = document.body;
-    const themeToggle = document.querySelector('.theme-toggle i');
+// Mobile navigation
+const burger = document.querySelector('.burger');
+const nav = document.querySelector('.nav-links');
+const navLinks = document.querySelectorAll('.nav-links li');
 
-    // Apply the stored theme immediately
-    if (storedTheme === 'dark') {
-        body.classList.add('dark-mode');
-        themeToggle.classList.remove('fa-moon');
-        themeToggle.classList.add('fa-sun');
-    } else {
-        body.classList.remove('dark-mode');
-        themeToggle.classList.remove('fa-sun');
-        themeToggle.classList.add('fa-moon');
-    }
-})();
+burger.addEventListener('click', () => {
+    // Toggle navigation
+    nav.classList.toggle('nav-active');
 
-// Check stored theme on page load (optional, as it's already done above)
-window.addEventListener('DOMContentLoaded', () => {
-    const body = document.body;
-    const themeToggle = document.querySelector('.theme-toggle i');
+    // Animate links
+    navLinks.forEach((link, index) => {
+        if (link.style.animation) {
+            link.style.animation = '';
+        } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+        }
+    });
 
-    // This part is now redundant since we're already setting the theme above
-    // But if you want to ensure icon status is correct on load, you can keep it:
-    if (body.classList.contains('dark-mode')) {
-        themeToggle.classList.remove('fa-moon');
-        themeToggle.classList.add('fa-sun');
-    } else {
-        themeToggle.classList.remove('fa-sun');
-        themeToggle.classList.add('fa-moon');
-    }
+    // Burger animation
+    burger.classList.toggle('toggle');
 });
 
-// Theme toggle functionality
-let toggleClickCount = 0; // Initialize a click counter
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
 
-function toggleTheme() {
-    const body = document.body;
-    const themeToggle = document.querySelector('.theme-toggle i');
-    
-    body.classList.toggle('dark-mode');
-    themeToggle.classList.toggle('fa-moon');
-    themeToggle.classList.toggle('fa-sun');
-
-    // Save the current theme to localStorage
-    if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-    } else {
-        localStorage.setItem('theme', 'light');
-    }
-
-    // Increment the click counter
-    toggleClickCount++;
-
-    // Check if the click count has reached 10
-    if (toggleClickCount === 10) {
-        showVideoPopup(); // Show the video popup
-        toggleClickCount = 0; // Reset the counter
-    }
-}
-
-function showVideoPopup() {
-    document.getElementById('video-popup').style.display = 'flex'; // Show the video popup
-}
-
-
-// Add event listener to theme toggle button
-document.querySelector('.theme-toggle').addEventListener('click', toggleTheme);
-
-// Accordion functionality
+// FAQ Accordion
 const accordionItems = document.querySelectorAll('.accordion-item');
 
 accordionItems.forEach(item => {
@@ -76,14 +38,10 @@ accordionItems.forEach(item => {
     const content = item.querySelector('.accordion-content');
 
     header.addEventListener('click', () => {
-        // Close all other accordion items
-        accordionItems.forEach(otherItem => {
-            if (otherItem !== item) {
-                otherItem.querySelector('.accordion-content').style.maxHeight = null;
-            }
-        });
+                header.classList.toggle('active');
+        content.classList.toggle('active');
 
-        // Toggle the clicked accordion item
+        // Animate accordion content
         if (content.style.maxHeight) {
             content.style.maxHeight = null;
         } else {
@@ -91,61 +49,21 @@ accordionItems.forEach(item => {
         }
     });
 });
+// footer.js
 
-// Smooth scroll for navigation
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href').substring(1); // Get the target ID
-        const targetSection = document.getElementById(targetId); // Find the target section
-
-        // If the target is a section, perform smooth scroll
-        if (targetSection) {
-            e.preventDefault(); // Prevent default anchor behavior
-            window.scrollTo({
-                top: targetSection.offsetTop - document.querySelector('.sticky-header').offsetHeight,
-                behavior: 'smooth'
-            });
-        } else {
-            // If it's not a section (like the Go Back link), allow the default action
-            // Optionally, you can add other handling here if needed
-        }
-    });
-});
 // Create the footer element
-const footerHTML = `
+const footer = document.createElement('footer');
 
-<footer>
-    <div class="container">
-        <p>&copy; 2024 Ryu. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://github.com/ActualRyu" aria-label="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/kaungsitnaing/" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-             <a href="https://codepen.io/actualryu" aria-label="Codepen"><i class="fab fa-codepen"></i></a>
-             <a href="https://twitter.com/ActuallyRyu" aria-label="twitter"><i class="fab fa-twitter"></i></a>
-        </div>
+// Set the inner HTML for the footer
+footer.innerHTML = `
+    <p>&copy; 2024 Ryu. All rights reserved.</p>
+    <div class="social-icons">
+        <a href="https://twitter.com/ActuallyRyu" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://twitter.com/ActuallyRyu" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/ActualRyu" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://codepen.io/actualryu" target="_blank"><i class="fab fa-codepen"></i></a>
     </div>
-</footer>
 `;
 
-// Footer for my lazy ass
-function insertFooter() {
-    console.log("Inserting footer..."); // Add this line for debugging
-    const footerDiv = document.createElement('div');
-    footerDiv.innerHTML = footerHTML;
-    document.body.appendChild(footerDiv);
-}
-
-
-// Call the function to insert the footer
-insertFooter();
-document.addEventListener('DOMContentLoaded', function() {
-    const closeButton = document.querySelector('.close-popup');
-    const videoPopup = document.getElementById('video-popup');
-
-    if (closeButton) {
-        closeButton.addEventListener('click', function() {
-            videoPopup.style.display = 'none'; // Close the popup
-            clearTimeout(popupTimeout); // Clear the timeout
-        });
-    }
-});
+// Append the footer to the body of the document
+document.body.appendChild(footer);
