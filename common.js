@@ -81,6 +81,7 @@ function makeDraggable(element) {
     let startX, startY, initialX, initialY;
     let lastTouchTime = 0;
     const touchDelay = 300; // ms delay for touch devices
+    let moveThreshold = 10; // pixels to move before considering it a drag
 
     element.addEventListener('mousedown', startDragging);
     element.addEventListener('touchstart', startDragging, { passive: false });
@@ -92,7 +93,6 @@ function makeDraggable(element) {
         }
         lastTouchTime = currentTime;
 
-        isDragging = true;
         if (e.type === 'mousedown') {
             startX = e.clientX;
             startY = e.clientY;
@@ -102,20 +102,22 @@ function makeDraggable(element) {
         }
         initialX = element.offsetLeft;
         initialY = element.offsetTop;
-        element.style.transition = 'none';
-        element.style.opacity = '0.8'; // Visual feedback
-        element.style.transform = 'scale(1.05)'; // Slight enlargement for feedback
-        e.preventDefault();
 
         document.addEventListener('mousemove', drag);
         document.addEventListener('touchmove', drag, { passive: false });
         document.addEventListener('mouseup', stopDragging);
         document.addEventListener('touchend', stopDragging);
+
+        // Delay setting isDragging to true
+        setTimeout(() => {
+            isDragging = true;
+        }, 100);
+
+        e.preventDefault();
     }
 
     function drag(e) {
         if (!isDragging) return;
-        e.preventDefault(); // Prevent scrolling on mobile
         let currentX, currentY;
         if (e.type === 'mousemove') {
             currentX = e.clientX;
@@ -124,14 +126,36 @@ function makeDraggable(element) {
             currentX = e.touches[0].clientX;
             currentY = e.touches[0].clientY;
         }
+
         const deltaX = currentX - startX;
         const deltaY = currentY - startY;
-        element.style.left = `${initialX + deltaX}px`;
-        element.style.top = `${initialY + deltaY}px`;
+
+        // Only start visual dragging if moved more than the threshold
+        if (Math.abs(deltaX) > moveThreshold || Math.abs(deltaY) > moveThreshold) {
+            element.style.transition = 'none';
+            element.style.opacity = '0.8';
+            element.style.transform = 'scale(1.05)';
+            element.style.left = `${initialX + deltaX}px`;
+            element.style.top = `${initialY + deltaY}px`;
+        }
+
+        e.preventDefault(); // Prevent scrolling on mobile
     }
 
-    function stopDragging() {
-        if (!isDragging) return;
+    function stopDragging(e) {
+        const hasMoved = element.style.left !== '' || element.style.top !== '';
+
+        document.removeEventListener('mousemove', drag);
+        document.removeEventListener('touchmove', drag);
+        document.removeEventListener('mouseup', stopDragging);
+        document.removeEventListener('touchend', stopDragging);
+
+        if (!isDragging || !hasMoved) {
+            // This was a click/tap, not a drag
+            isDragging = false;
+            return;
+        }
+
         isDragging = false;
         element.style.transition = 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
         element.style.opacity = '1';
@@ -155,11 +179,6 @@ function makeDraggable(element) {
         } else {
             snapBack();
         }
-
-        document.removeEventListener('mousemove', drag);
-        document.removeEventListener('touchmove', drag);
-        document.removeEventListener('mouseup', stopDragging);
-        document.removeEventListener('touchend', stopDragging);
     }
 
     function snapBack(callback) {
