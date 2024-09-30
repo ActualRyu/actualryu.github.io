@@ -80,27 +80,44 @@ function makeDraggable(element) {
     let isDragging = false;
     let startX, startY, initialX, initialY;
 
+    // Add event listeners for both pointer and touch events
     element.addEventListener('pointerdown', startDragging);
+    element.addEventListener('touchstart', startDragging);
 
     function startDragging(e) {
         isDragging = true;
         if (e.type === 'pointerdown') {
             startX = e.clientX;
             startY = e.clientY;
+        } else if (e.type === 'touchstart') {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
         }
+
         initialX = element.offsetLeft;
         initialY = element.offsetTop;
         element.style.transition = 'none'; // Disable transition during dragging
         e.preventDefault();
 
         document.addEventListener('pointermove', drag);
+        document.addEventListener('touchmove', drag);
         document.addEventListener('pointerup', stopDragging);
+        document.addEventListener('touchend', stopDragging);
     }
 
     function drag(e) {
         if (!isDragging) return;
-        let currentX = e.clientX;
-        let currentY = e.clientY;
+        let currentX, currentY;
+
+        // Determine whether we're dealing with a pointer or touch event
+        if (e.type === 'pointermove') {
+            currentX = e.clientX;
+            currentY = e.clientY;
+        } else if (e.type === 'touchmove') {
+            currentX = e.touches[0].clientX;
+            currentY = e.touches[0].clientY;
+        }
+
         const deltaX = currentX - startX;
         const deltaY = currentY - startY;
         element.style.left = `${initialX + deltaX}px`;
@@ -136,7 +153,9 @@ function makeDraggable(element) {
         }
 
         document.removeEventListener('pointermove', drag);
+        document.removeEventListener('touchmove', drag);
         document.removeEventListener('pointerup', stopDragging);
+        document.removeEventListener('touchend', stopDragging);
     }
 
     function snapBack(callback) {
@@ -149,6 +168,7 @@ function makeDraggable(element) {
         }, 300);
     }
 }
+
 
 
 // Add event listener to the theme toggle button
