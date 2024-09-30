@@ -478,7 +478,7 @@ footer {
         transform: rotate(45deg) translate(-5px, -6px);
     }
     #home {
-        display: flex;
+
         text-align: center;
         padding: 3rem;
         margin:1rem;
