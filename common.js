@@ -206,7 +206,7 @@ function createVideoPopup() {
         <div class="popup-content">
             <button class="close-popup" aria-label="Close Video Popup">&times;</button>
             <video id="popup-video" width="100%" height="auto" autoplay muted loop>
-                <source src="https://actualryu.github.com/media/kitten.webm" type="video/webm"> <!-- Absolute path -->
+                <source src="https://github.com/ActualRyu/actualryu.github.io/raw/refs/heads/main/media/kitten.webm" type="video/webm"> <!-- Absolute path -->
                 Your browser does not support the video tag.
             </video>
         </div>
