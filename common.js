@@ -79,11 +79,19 @@ function setInitialTheme() {
 function makeDraggable(element) {
     let isDragging = false;
     let startX, startY, initialX, initialY;
+    let lastTouchTime = 0;
+    const touchDelay = 300; // ms delay for touch devices
 
     element.addEventListener('mousedown', startDragging);
-    element.addEventListener('touchstart', startDragging);
+    element.addEventListener('touchstart', startDragging, { passive: false });
 
     function startDragging(e) {
+        const currentTime = new Date().getTime();
+        if (e.type === 'touchstart' && currentTime - lastTouchTime < touchDelay) {
+            return;
+        }
+        lastTouchTime = currentTime;
+
         isDragging = true;
         if (e.type === 'mousedown') {
             startX = e.clientX;
@@ -95,16 +103,19 @@ function makeDraggable(element) {
         initialX = element.offsetLeft;
         initialY = element.offsetTop;
         element.style.transition = 'none';
+        element.style.opacity = '0.8'; // Visual feedback
+        element.style.transform = 'scale(1.05)'; // Slight enlargement for feedback
         e.preventDefault();
 
         document.addEventListener('mousemove', drag);
-        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchmove', drag, { passive: false });
         document.addEventListener('mouseup', stopDragging);
         document.addEventListener('touchend', stopDragging);
     }
 
     function drag(e) {
         if (!isDragging) return;
+        e.preventDefault(); // Prevent scrolling on mobile
         let currentX, currentY;
         if (e.type === 'mousemove') {
             currentX = e.clientX;
@@ -123,6 +134,8 @@ function makeDraggable(element) {
         if (!isDragging) return;
         isDragging = false;
         element.style.transition = 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
+        element.style.opacity = '1';
+        element.style.transform = 'scale(1)';
 
         const logo = document.querySelector('.logo');
         const logoRect = logo.getBoundingClientRect();

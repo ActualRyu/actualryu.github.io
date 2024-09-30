@@ -658,4 +658,9 @@ footer {
         z-index: 1000;
         overflow: hidden;
     }
+    .popup-content {
+
+        width: 80vw; /* Set the width as needed */
+        z-index: 1000; /* Ensure it's above other elements */
+    }
 }
