@@ -80,44 +80,39 @@ function makeDraggable(element) {
     let isDragging = false;
     let startX, startY, initialX, initialY;
 
-    // Add event listeners for both pointer and touch events
-    element.addEventListener('pointerdown', startDragging);
+    element.addEventListener('mousedown', startDragging);
     element.addEventListener('touchstart', startDragging);
 
     function startDragging(e) {
         isDragging = true;
-        if (e.type === 'pointerdown') {
+        if (e.type === 'mousedown') {
             startX = e.clientX;
             startY = e.clientY;
         } else if (e.type === 'touchstart') {
             startX = e.touches[0].clientX;
             startY = e.touches[0].clientY;
         }
-
         initialX = element.offsetLeft;
         initialY = element.offsetTop;
-        element.style.transition = 'none'; // Disable transition during dragging
+        element.style.transition = 'none';
         e.preventDefault();
 
-        document.addEventListener('pointermove', drag);
+        document.addEventListener('mousemove', drag);
         document.addEventListener('touchmove', drag);
-        document.addEventListener('pointerup', stopDragging);
+        document.addEventListener('mouseup', stopDragging);
         document.addEventListener('touchend', stopDragging);
     }
 
     function drag(e) {
         if (!isDragging) return;
         let currentX, currentY;
-
-        // Determine whether we're dealing with a pointer or touch event
-        if (e.type === 'pointermove') {
+        if (e.type === 'mousemove') {
             currentX = e.clientX;
             currentY = e.clientY;
         } else if (e.type === 'touchmove') {
             currentX = e.touches[0].clientX;
             currentY = e.touches[0].clientY;
         }
-
         const deltaX = currentX - startX;
         const deltaY = currentY - startY;
         element.style.left = `${initialX + deltaX}px`;
@@ -127,14 +122,12 @@ function makeDraggable(element) {
     function stopDragging() {
         if (!isDragging) return;
         isDragging = false;
-        element.style.transition = 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'; // Re-enable transition
+        element.style.transition = 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
 
-        // Check for overlap with the logo
         const logo = document.querySelector('.logo');
         const logoRect = logo.getBoundingClientRect();
         const draggableRect = element.getBoundingClientRect();
 
-        // Check if the draggable element overlaps with the logo
         const isOverlapping = (
             draggableRect.left < logoRect.right &&
             draggableRect.right > logoRect.left &&
@@ -143,18 +136,16 @@ function makeDraggable(element) {
         );
 
         if (isOverlapping) {
-            // Snap back to original position and show the video
             snapBack(() => {
-                openVideoPopup(); // Call to show the video popup
+                openVideoPopup();
             });
         } else {
-            // Just snap back to the original position
             snapBack();
         }
 
-        document.removeEventListener('pointermove', drag);
+        document.removeEventListener('mousemove', drag);
         document.removeEventListener('touchmove', drag);
-        document.removeEventListener('pointerup', stopDragging);
+        document.removeEventListener('mouseup', stopDragging);
         document.removeEventListener('touchend', stopDragging);
     }
 
@@ -164,7 +155,7 @@ function makeDraggable(element) {
         element.style.top = `${initialY}px`;
         setTimeout(() => {
             element.style.transition = '';
-            if (callback) callback(); // Execute callback if provided
+            if (callback) callback();
         }, 300);
     }
 }
